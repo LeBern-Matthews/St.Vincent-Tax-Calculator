@@ -1,33 +1,36 @@
 STANDARD_DEDUCTION=25000
 
-pay_method=input("How do you get payed? \ne.g monthly, weekly, biweekly: ").lower()
+pay_interval=input("How do you get payed? \ne.g monthly, weekly, biweekly: ").lower()
 pay=float(input("Enter your pay for the above method:"))
 
-def Calculate_yearly_multiple(pay_method:str)->int:
-    match (pay_method):
-        case "monthly":
-            yearly_multiple=12
-        case "biweekly":
-            yearly_multiple=26
-        case "weekly":
-            yearly_multiple=52
-        case default:
-            print("Womp womp")
+
+def Calculate_yearly_multiple(pay_interval:str)->int:
+    while True:
+        match (pay_interval):
+            case "monthly":
+                yearly_multiple=12
+            case "biweekly":
+                yearly_multiple=26
+            case "weekly":
+                yearly_multiple=52
+            case default:
+                print("Please enter a valid interval of payment of ")
+                pay_interval=input("How do you get payed? \ne.g monthly, weekly, biweekly: ").lower()
     return yearly_multiple
 
-def Calculate_yearly_salery(pay_method:str,pay: float)-> float:
+def Calculate_yearly_salery(pay_interval:str,pay: float)-> float:
     """
     calculates the gross yearly pay
     
     Parameters:
-        pay_method(str): How often the user gets payed
-        pay(str): How much they are payed based on pay_method
+        pay_interval(str): How often the user gets payed
+        pay(str): How much they are payed based on pay_interval
         
     Returns:
         float: A floating point number with that is the yearly salery
     """
         
-    return pay*Calculate_yearly_multiple(pay_method)
+    return pay*Calculate_yearly_multiple(pay_interval)
     
 def Calculate_finances(income: float, currency:str, yearly_multiple:int):
     chargible_income=income-STANDARD_DEDUCTION
@@ -51,4 +54,4 @@ def Calculate_finances(income: float, currency:str, yearly_multiple:int):
         return tax
     
     
-print(Calculate_finances(Calculate_yearly_salery(pay_method,pay), "$EC", Calculate_yearly_multiple(pay_method)))
+print(Calculate_finances(Calculate_yearly_salery(pay_interval,pay), "$EC", Calculate_yearly_multiple(pay_interval)))
