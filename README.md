@@ -58,3 +58,7 @@ main()
 ```
 
 Orchestrates the program by gathering user inputs, calculating yearly and interval income, and calling the necessary functions to display tax calculations.
+
+## Source
+The information used in this program is found in the tax table above, and the calculations were verified against it.
+THe tax table was sourced on gov.vc @ [This link](https://finance.gov.vc/finance/index.php/paye-tax-table)
